@@ -1,5 +1,5 @@
-# PinkAVDAIB
+# Pink AVD Azure VM Image Builder Template Repo
 
-Azure VM Image Builder Template Repo
+
 
 
