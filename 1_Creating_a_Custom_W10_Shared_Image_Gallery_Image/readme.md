@@ -55,7 +55,7 @@ Import-Module Az.Accounts
 $currentAzContext = Get-AzContext
 
 # destination image resource group
-$imageResourceGroup="RG-MI-Prod-001-PEL"
+$imageResourceGroup="ResourceGroupName"
 
 # location (see possible locations in main docs)
 $location="westeurope"
