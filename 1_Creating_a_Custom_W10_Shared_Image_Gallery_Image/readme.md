@@ -55,10 +55,10 @@ Import-Module Az.Accounts
 $currentAzContext = Get-AzContext
 
 # destination image resource group
-$imageResourceGroup="aibwinsig01"
+$imageResourceGroup="RG-MI-Prod-001-PEL"
 
 # location (see possible locations in main docs)
-$location="westus"
+$location="westeurope"
 
 # your subscription, this will get your current subscription
 $subscriptionID=$currentAzContext.Subscription.Id
@@ -67,7 +67,7 @@ $subscriptionID=$currentAzContext.Subscription.Id
 $imageName="aibCustomImgWin10"
 
 # image template name
-$imageTemplateName="helloImageTemplateWin02ps"
+$imageTemplateName="W10ImageTemplateps"
 
 # distribution properties object name (runOutput), i.e. this gives you the properties of the managed image on completion
 $runOutputName="winclientR01"
