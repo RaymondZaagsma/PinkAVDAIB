@@ -13,7 +13,7 @@ function Write-Log {
 }
 #endregion
 
-#region Foxit Reader
+#region Liquit Agent
 try {
     Start-Process -filepath "c:\temp\liquit\Deploy-Application.exe" -Wait -ErrorAction Stop -ArgumentList 'install noninteractive'
     if (Test-Path "C:\Program Files (x86)\Liquit Workspace\Agent\UserHost.exe") {
