@@ -6,7 +6,7 @@
 
 
 #region Set logging 
-$logFile = "c:\avdsoftware\" + (get-date -format 'yyyyMMdd') + '_softwareinstall.log'
+$logFile = "c:\temp\" + (get-date -format 'yyyyMMdd') + '_softwareinstall.log'
 function Write-Log {
     Param($message)
     Write-Output "$(get-date -format 'yyyyMMdd HH:mm:ss') $message" | Out-File -Encoding utf8 $logFile -Append
@@ -15,17 +15,17 @@ function Write-Log {
 
 #region Foxit Reader
 try {
-    Start-Process -filepath "c:\avdsoftware\liquit\Deploy-Application.exe" -Wait -ErrorAction Stop -ArgumentList 'install noninteractive'
+    Start-Process -filepath "c:\temp\liquit\Deploy-Application.exe" -Wait -ErrorAction Stop -ArgumentList 'install noninteractive'
     if (Test-Path "C:\Program Files (x86)\Liquit Workspace\Agent\UserHost.exe") {
         Write-Log "Liquit agent has been installed"
     }
     else {
-        write-log "Error locating the Foxit Reader executable"
+        write-log "Error locating Liquit Agent executable"
     }
 }
 catch {
     $ErrorMessage = $_.Exception.message
-    write-log "Error installing Foxit Reader: $ErrorMessage"
+    write-log "Error installing Liquit Agent: $ErrorMessage"
 }
 #endregion
 
