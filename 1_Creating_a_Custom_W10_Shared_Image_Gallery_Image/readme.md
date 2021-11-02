@@ -1,25 +1,4 @@
-# Using PowerShell to Create a Windows Server Custom Image using Azure VM Image Builder
-
-> **MAY 2020 SERVICE ALERT** - Existing users, please ensure you are compliant this [Service Alert by 26th May!!!](https://github.com/danielsollondon/azvmimagebuilder#service-update-may-2020-action-needed-by-26th-may---please-review)
-
-This article is to show you how you can create a basic customized image using the Azure VM Image Builder, and distibute to the Azure [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries), where you can replicate regions, control the scale, and share inside and outside your organizations.
-
-This covers using mutliple customizations to illustrate some high level functionality:
-* PowerShell (ScriptUri) - Downloading a bash script and executing it
-* PowerShell (inline) - Execute an array of commands
-* File - Copy a html file from github to a specified, pre-created directory
-* buildTimeoutInMinutes - Increase a build time to allow for longer running builds 
-* vmProfile - specifying a vmSize and Network properties
-* osDiskSizeGB - you can increase the size of image
-* WindowsRestart - this will allow for restarts between software installs
-* WindowsUpdate - update the image with the latest Windows Updates, note this will handle its own required reboots.
-
-To simplify deploying an AIB configuration template with PowerShell CLI, this example uses an Azure Resource Manager (ARM) template with the AIB template nested inside, and gives you other benefits for free, such as variables and parameter inputs etc. You can also pass parameters from the commandline too, which you will see here.
-
-This walk through is intended to be a copy and paste exercise, and will provide you with a custom Win Server image (AIB also supports client images), showing you how you can easily create a custom image.
-
->>> Note! Azure Image Builder automatically runs sysprep to generalize the image, this is a generic sysprep command, which you can [overide](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) if you are aware of more favorable settings. However, for *Windows there are limits on how many times (8), an image can be sysprep'd*, see [here](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) for more details. Therefore exercise caution on how many times you layer customizations.
-
+# Using PowerShell to Create a Windows 10 Custom Image using Azure VM Image Builder
 
 ## PreReqs
 You must have the latest Azure PowerShell CmdLets installed, see [here](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-2.6.0) for install details.
