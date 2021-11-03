@@ -73,7 +73,17 @@
 						  "Expand-Archive 'c:\\temp\\software.zip' c:\\temp"
 						]
 					  },
-        
+					{
+                        "type": "PowerShell",
+                        "runElevated": true,
+                        "name": "Sysprep command change",
+                        "inline": [
+                            "Write-Output 'Changing Sysprep switches'",
+                            "((Get-Content -path C:\\DeprovisioningScript.ps1 -Raw) -replace 'Sysprep.exe /oobe /generalize /quiet /quit','Sysprep.exe /oobe /generalize /quit /mode:vm' ) | Set-Content -Path C:\\DeprovisioningScript.ps1",
+                            "$switches = Get-Content -path C:\\DeprovisioningScript.ps1 | Select-String -Pattern Sysprep.exe",
+                            "Write-Output \"New Sysprep command is $switches\""
+                        ]
+                    },
                     {
                         "type": "PowerShell",
 						"runElevated": true,
