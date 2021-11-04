@@ -37,7 +37,7 @@
                     },
         
         "properties": {
-            "buildTimeoutInMinutes" : 100,
+            "buildTimeoutInMinutes" : 180,
 
             "vmProfile": 
                     {
@@ -47,9 +47,9 @@
         
             "source": {
                 "type": "PlatformImage",
-                    "publisher": "MicrosoftWindowsDesktop",
-                    "offer": "Windows-10",
-                    "sku": "20h1-evd",
+                    "publisher": "<publisher>",
+                    "offer": "<offer>",
+                    "sku": "<sku>",
                     "version": "latest"
                 
             },
@@ -126,7 +126,7 @@
                     "runOutputName": "<runOutputName>",
                     "artifactTags": {
                         "source": "azureVmImageBuilder",
-                        "baseosimg": "windows10Multi"
+                        "baseosimg": "<baseosimg>"
 						 },
                     "replicationRegions": [
                       "West Europe"
