@@ -113,6 +113,7 @@ https://docs.microsoft.com/en-us/azure/role-based-access-control/troubleshooting
 ```powerShell
 $sigGalleryName= "SIG_AVD_Prod_001_PEL"
 $imageDefName ="AVD_W10_Prod_002_PEL"
+$imageDefNameversion = "AVD_W10_Prod_002_rev02_PEL"
 
 # create gallery
 New-AzGallery -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup  -Location $location
@@ -220,6 +221,7 @@ Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
 ((Get-Content -path $templateFilePath -Raw) -replace '<offer>',$offer ) | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<sku>',$sku ) | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<baseosimg>',$baseosimg ) | Set-Content -Path $templateFilePath
+((Get-Content -path $templateFilePath -Raw) -replace '<version>',$imageDefNameversion ) | Set-Content -Path $templateFilePath
 
 ```
 
