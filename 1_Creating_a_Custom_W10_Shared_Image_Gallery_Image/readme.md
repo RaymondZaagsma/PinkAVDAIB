@@ -30,12 +30,6 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |
   Where-Object RegistrationState -ne Registered |
     Register-AzResourceProvider
-	
-
-Step 1: Set up environment and variables
-
-# Step 1: Import module
-Import-Module Az.Accounts
 ```
 
 ## Step 1: Set up environment and variables
@@ -48,22 +42,14 @@ Import-Module Az.Accounts
 $currentAzContext = Get-AzContext
 
 # destination image resource group
-$imageResourceGroup="ResourceGroupName"
+$imageResourceGroup="RG-MI-Prod-001-PEL"
 
-# location (see possible locations in main docs)
+# Azure region
+# Supported Regions East US, East US 2, West Central US, West US, West US 2, North Europe, West Europe
 $location="westeurope"
 
 # your subscription, this will get your current subscription
 $subscriptionID=$currentAzContext.Subscription.Id
-
-# name of the image to be created
-$imageName="aibCustomImgWin10"
-
-# image template name
-$imageTemplateName="W10ImageTemplateps"
-
-# distribution properties object name (runOutput), i.e. this gives you the properties of the managed image on completion
-$runOutputName="winclientR01"
 
 # create resource group
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
