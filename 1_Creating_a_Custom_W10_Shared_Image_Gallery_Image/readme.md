@@ -185,9 +185,9 @@ $baseosimg = 'W11MultiO365'
 ```
 ## Upload Customization zip to Azure Storage Container
 
-Create Storage account in ImageResourceGroup
-Create Container in Storage Account
-Upload Software Zip file to Container 
+Create Storage account in ImageResourceGroup  
+Create Container in Storage Account  
+Upload Software Zip file to Container   
 Generate SAS token and copy Blob SAS URL and past url in variable $archiveSas
 
 ## Add the file archive Shared Access Signature
