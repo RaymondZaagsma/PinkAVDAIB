@@ -149,41 +149,49 @@ $imageTemplateName="AVDPinkImageTemplateWin10"
 
 # distribution properties object name (runOutput), i.e. this gives you the properties of the managed image on completion
 $runOutputName="winclientR01"
-
-# Windows 10 Enterprise Multisession Gen 2
-
+```
+Windows 10 Enterprise Multisession Gen 2
+```powerShell
 $publisher = 'MicrosoftWindowsDesktop'
 $offer = 'Windows-10'
 $sku = '21h1-evd-g2'
 $baseosimg = 'Windows10Multi'
 
-# Windows 10 Enterprise Multisession + Microsoft 365 Apps Gen 2
+```
 
+Windows 10 Enterprise Multisession + Microsoft 365 Apps Gen 2
+```powerShell
 $publisher = 'MicrosoftWindowsDesktop'
 $offer = 'office-365'
 $sku = '21h1-evd-o365pp-g2'
 $baseosimg = 'W10MultiO365'
 
-# Windows 11 Enterprise Multisession Gen 2
-
+```
+Windows 11 Enterprise Multisession Gen 2
+```powerShell
 $publisher = 'MicrosoftWindowsDesktop'
 $offer = 'Windows-11'
 $sku = 'win11-21h2-avd'
 $baseosimg = 'Windows11Multi'
 
-# Windows 11 Enterprise Multisession + Microsoft 365 Apps Gen 2
-
+```
+Windows 11 Enterprise Multisession + Microsoft 365 Apps Gen 2
+```powerShell
 $publisher = 'MicrosoftWindowsDesktop'
 $offer = 'office-365'
 $sku = 'win11-21h2-avd-m365'
 $baseosimg = 'W11MultiO365'
 
-# Create Storage account in ImageResourceGroup
-# Create Container in Storage Account
-# Upload Software Zip file to Container (liquit agent install)
-# Generate SAS token and copy Blob SAS URL and past url in variable $archiveSas
+```
+### Upload Customization zip to Azure Storage Container
+
+Create Storage account in ImageResourceGroup
+Create Container in Storage Account
+Upload Software Zip file to Container 
+Generate SAS token and copy Blob SAS URL and past url in variable $archiveSas
 
 # Add the file archive Shared Access Signature
+```powerShell
 $archiveSas = "https://stmisoftware.blob.core.windows.net/software/Software.zip?sp=r&st=2021-11-03T12:09:17Z&se=2021-11-03T20:09:17Z&spr=https&sv=2020-08-04&sr=b&sig=2kU57nAV5uUk2vziQkowXs3jC31j%2FVqdVbu2cDwOTO8%3D"
 $installScript = 'https://raw.githubusercontent.com/RaymondZaagsma/PinkAVDAIB/main/1_Creating_a_Custom_W10_Shared_Image_Gallery_Image/Install-Applications.ps1'
 
