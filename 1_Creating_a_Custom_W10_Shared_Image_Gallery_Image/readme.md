@@ -111,17 +111,29 @@ https://docs.microsoft.com/en-us/azure/role-based-access-control/troubleshooting
 ## Step 3 : Create the Shared Image Gallery
 
 ```powerShell
-$sigGalleryName= "myaibsig01"
-$imageDefName ="winSvrimages"
-
-# additional replication region
-$replRegion2="eastus"
+$sigGalleryName= "SIG_AVD_Prod_001_PEL"
+$imageDefName ="AVD_W10_Prod_002_PEL"
 
 # create gallery
 New-AzGallery -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup  -Location $location
 
 # create gallery definition
-New-AzGalleryImageDefinition -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup -Location $location -Name $imageDefName -OsState generalized -OsType Windows -Publisher 'myCo' -Offer 'Windows' -Sku 'Win2019'
+
+$ParamNewAzGalleryImageDefinition = @{
+  GalleryName       = $sigGalleryName
+  ResourceGroupName = $imageResourceGroup
+  Location          = $location
+  Name              = $imageDefName
+  OsState           = 'generalized'
+  OsType            = 'Windows'
+  Publisher         = 'PEL-AVD-Rev01'
+  Offer             = 'PEL-W10-Rev01'
+  Sku               = 'PEL-20h1-evd-Rev01'
+}
+
+
+New-AzGalleryImageDefinition @ParamNewAzGalleryImageDefinition
+
 
 ```
 
