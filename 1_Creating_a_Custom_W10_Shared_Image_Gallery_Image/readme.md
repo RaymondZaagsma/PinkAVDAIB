@@ -186,16 +186,13 @@ $baseosimg = 'W11MultiO365'
 ## Upload Customization zip to Azure Storage Container
 
 Create Storage account in ImageResourceGroup
-
 Create Container in Storage Account
-
 Upload Software Zip file to Container 
-
 Generate SAS token and copy Blob SAS URL and past url in variable $archiveSas
 
 ## Add the file archive Shared Access Signature
 ```powerShell
-$archiveSas = "https://stmisoftware.blob.core.windows.net/software/Software.zip?sp=r&st=2021-11-03T12:09:17Z&se=2021-11-03T20:09:17Z&spr=https&sv=2020-08-04&sr=b&sig=2kU57nAV5uUk2vziQkowXs3jC31j%2FVqdVbu2cDwOTO8%3D"
+$archiveSas = "Sas Token Here"
 $installScript = 'https://raw.githubusercontent.com/RaymondZaagsma/PinkAVDAIB/main/1_Creating_a_Custom_W10_Shared_Image_Gallery_Image/Install-Applications.ps1'
 
 
