@@ -30,6 +30,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |
   Where-Object RegistrationState -ne Registered |
     Register-AzResourceProvider
+    
 ```
 
 ## Step 1: Set up environment and variables
@@ -53,6 +54,7 @@ $subscriptionID=$currentAzContext.Subscription.Id
 
 # create resource group
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
+
 ```
 
 ## Step 2 : Permissions, create user idenity and role for AIB
