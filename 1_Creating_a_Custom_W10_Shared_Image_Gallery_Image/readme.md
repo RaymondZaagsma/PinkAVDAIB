@@ -4,6 +4,16 @@
 You must have the latest Azure PowerShell CmdLets installed, see [here](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-2.6.0) for install details.
 
 ```PowerShell
+# Log In
+Connect-AzAccount
+
+# View current subscription
+Get-AzContext
+
+# Set subscription 
+Get-AzSubscription
+Set-AzContext -SubscriptionId "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+
 # Register for Azure Image Builder Feature
 Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 
@@ -16,12 +26,16 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 
-# If they do not saw registered, run the commented out code below.
+# Register resource providers if not already registered
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |
+  Where-Object RegistrationState -ne Registered |
+    Register-AzResourceProvider
+	
 
-## Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
-## Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-## Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-## Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
+Step 1: Set up environment and variables
+
+# Step 1: Import module
+Import-Module Az.Accounts
 ```
 
 ## Step 1: Set up environment and variables
