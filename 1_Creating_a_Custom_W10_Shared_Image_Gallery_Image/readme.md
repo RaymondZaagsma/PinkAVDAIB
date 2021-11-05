@@ -80,25 +80,31 @@ $idenityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageRe
 ### Assign permissions for identity to distribute images
 This command will download and update the template with the parameters specified earlier.
 ```powerShell
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+# Assign permissions for identity to distribute images
+# downloads a .json file with settings, update with subscription settings
+
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/RaymondZaagsma/PinkAVDAIB/main/1_Creating_a_Custom_W10_Shared_Image_Gallery_Image/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
-# download config
+# Download the file
 Invoke-WebRequest -Uri $aibRoleImageCreationUrl -OutFile $aibRoleImageCreationPath -UseBasicParsing
 
+# Update the file
 ((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<subscriptionID>',$subscriptionID) | Set-Content -Path $aibRoleImageCreationPath
 ((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<rgName>', $imageResourceGroup) | Set-Content -Path $aibRoleImageCreationPath
 ((Get-Content -path $aibRoleImageCreationPath -Raw) -replace 'Azure Image Builder Service Image Creation Role', $imageRoleDefName) | Set-Content -Path $aibRoleImageCreationPath
 
 # create role definition
-New-AzRoleDefinition -InputFile  ./aibRoleImageCreation.json
+New-AzRoleDefinition -InputFile  .\aibRoleImageCreation.json
 
 # grant role definition to image builder service principal
 New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
 
+# Verify Role Assignment
+Get-AzRoleAssignment -ObjectId $idenityNamePrincipalId | Select-Object DisplayName,RoleDefinitionId
+
 ### NOTE: If you see this error: 'New-AzRoleDefinition: Role definition limit exceeded. No more role definitions can be created.' See this article to resolve:
 https://docs.microsoft.com/en-us/azure/role-based-access-control/troubleshooting
-
 
 ```
 
