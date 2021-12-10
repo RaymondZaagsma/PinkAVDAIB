@@ -84,12 +84,6 @@
                             "Write-Output \"New Sysprep command is $switches\""
                         ]
                     },
-                    {
-                        "type": "PowerShell",
-						"runElevated": true,
-						"name": "RunPoShInstall",
-						"scriptUri": "<URI to PowerShell Script>"
-                    },
                       {
                         "type": "WindowsRestart",
                         "restartCheckCommand": "write-host 'restarting post Apps Install'",
