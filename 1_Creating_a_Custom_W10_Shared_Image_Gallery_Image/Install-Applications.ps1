@@ -15,7 +15,7 @@ function Write-Log {
 
 #region Liquit Agent
 try {
-    Start-Process -filepath "c:\temp\liquit\Deploy-Application.exe" -Wait -ErrorAction Stop -ArgumentList 'install noninteractive'
+    Start-Process -filepath "c:\temp\software\liquit\Deploy-Application.exe" -Wait -ErrorAction Stop -ArgumentList 'install noninteractive'
     if (Test-Path "C:\Program Files (x86)\Liquit Workspace\Agent\UserHost.exe") {
         Write-Log "Liquit agent has been installed"
     }
